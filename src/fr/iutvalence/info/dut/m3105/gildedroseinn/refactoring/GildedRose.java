@@ -38,38 +38,42 @@ public class GildedRose
 	}
 
 	private static void updateItem(Item item) {
+		
+		int itemQuality = item.getQuality();
+		int sellIn = item.getSellIn();
+		
 		if ((!"Aged Brie".equals(item.getName()))
 				&& !"Backstage passes to a TAFKAL80ETC concert".equals(item.getName()))
 		{
-			if (item.getQuality() > 0)
+			if (itemQuality > 0)
 			{
 				if (!"Sulfuras, Hand of Ragnaros".equals(item.getName()))
 				{
-					item.setQuality(item.getQuality() - 1);
+					item.setQuality(itemQuality - 1);
 				}
 			}
 		}
 		else
 		{
-			if (item.getQuality() < 50)
+			if (itemQuality < 50)
 			{
-				item.setQuality(item.getQuality() + 1);
+				item.setQuality(itemQuality + 1);
 
 				if ("Backstage passes to a TAFKAL80ETC concert".equals(item.getName()))
 				{
-					if (item.getSellIn() < 11)
+					if (sellIn < 11)
 					{
-						if (item.getQuality() < 50)
+						if (itemQuality < 50)
 						{
-							item.setQuality(item.getQuality() + 1);
+							item.setQuality(itemQuality + 1);
 						}
 					}
 
-					if (item.getSellIn() < 6)
+					if (sellIn < 6)
 					{
-						if (item.getQuality() < 50)
+						if (itemQuality < 50)
 						{
-							item.setQuality(item.getQuality() + 1);
+							item.setQuality(itemQuality + 1);
 						}
 					}
 				}
@@ -78,33 +82,33 @@ public class GildedRose
 
 		if (!"Sulfuras, Hand of Ragnaros".equals(item.getName()))
 		{
-			item.setSellIn(item.getSellIn() - 1);
+			item.setSellIn(sellIn - 1);
 		}
 
-		if (item.getSellIn() < 0)
+		if (sellIn < 0)
 		{
 			if (!"Aged Brie".equals(item.getName()))
 			{
 				if (!"Backstage passes to a TAFKAL80ETC concert".equals(item.getName()))
 				{
-					if (item.getQuality() > 0)
+					if (itemQuality > 0)
 					{
 						if (!"Sulfuras, Hand of Ragnaros".equals(item.getName()))
 						{
-							item.setQuality(item.getQuality() - 1);
+							item.setQuality(itemQuality - 1);
 						}
 					}
 				}
 				else
 				{
-					item.setQuality(item.getQuality() - item.getQuality());
+					item.setQuality(itemQuality - itemQuality);
 				}
 			}
 			else
 			{
-				if (item.getQuality() < 50)
+				if (itemQuality < 50)
 				{
-					item.setQuality(item.getQuality() + 1);
+					item.setQuality(itemQuality + 1);
 				}
 			}
 		}
